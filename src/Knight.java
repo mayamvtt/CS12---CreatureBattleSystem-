@@ -7,7 +7,7 @@ public class Knight extends Creature {
     @Override
     public float attack() {
         int missChance = Rand.randomInt(1, 10);
-        if (missChance > 4) {
+        if (missChance < 4) {
             return 0;
         } else {
             float power = 0;

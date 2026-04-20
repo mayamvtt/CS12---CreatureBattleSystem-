@@ -6,7 +6,7 @@ public class Goblin extends Creature {
     @Override
     public float attack() {
         int missChance = Rand.randomInt(1, 10);
-        if (missChance > 1) {
+        if (missChance < 1) {
             return 0;
         }
         else {
