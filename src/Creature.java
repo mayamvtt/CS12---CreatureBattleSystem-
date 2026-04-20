@@ -3,10 +3,8 @@ public class Creature {
     public String name;
     public String action;
 
-
     // Returns the damage done by the Creature
     public float attack() {
-
         // 20% chance of missing
         if (Rand.randomInt(0, 10) < 2) {
             action = name + " missed!";

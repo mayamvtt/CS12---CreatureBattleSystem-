@@ -1,26 +1,40 @@
-public class Goblin extends Creature{
+public class Goblin extends Creature {
+    public Goblin(){
+        this.name = "Goblin";
+        this.health = 75;
+    }
     @Override
     public float attack() {
-
-        // 10% chance of missing (because they are small and quick)
-        if (Rand.randomInt(0, 10) < 1) {
-            action = name + " missed!";
+        int missChance = Rand.randomInt(1, 10);
+        if (missChance > 1) {
             return 0;
         }
-
-        // otherwise, do damage between 10-15
-        float power = Rand.randomFloat(10, 15);
-        action = name + " grapples with power " + power + "!";
-        return power;
+        else {
+            float power = 0;
+            int attackSelection = Rand.randomInt(1, 3);
+            switch (attackSelection) {
+                // Additional Attack selection
+                case 1: // Grapple
+                    power = Rand.randomFloat(0, 5);
+                    action = name + " grappled with power " + power + "!";
+                case 2: // Kick
+                    power = Rand.randomFloat(2,4);
+                    action = name + " kicked with power " + power + "!";
+                case 3: // Punch
+                    power = Rand.randomFloat(5,10);
+                    action = name + "punched with power " + power + "!";
+            }
+            return power;
+        }
     }
 
     @Override
     public void defend(float incomingPower) {
 
-        // 50 % chance of dodging
-        if (Rand.randomInt(0, 10) < 5) {
+        // 90 % chance of reducing damage taken (because of agility)
+        if (Rand.randomInt(0, 10) < 9) {
             incomingPower = 0;
-            action = name + " dodged! " + name + " takes no damage! ";
+            action = name + " parried and fully dodged the attack!";
         }
         else
         {
