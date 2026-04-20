@@ -2,10 +2,10 @@ public class Main {
     public static void main(String[] args) {
 
         // set up the creatures
-        Creature a = new Creature();
-        Creature b = new Creature();
+        Creature a = new Goblin();
+        Creature b = new Knight();
         a.name = "A";
-        a.health = 100;
+        a.health = 65;
         b.name = "B";
         b.health = 100;
 
