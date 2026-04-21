@@ -8,8 +8,10 @@ public class Knight extends Creature {
     public float attack() {
         int missChance = Rand.randomInt(1, 10);
         if (missChance < 4) {
+            action = name + " missed!";
             return 0;
-        } else {
+        }
+        else {
             float power = 0;
             int attackSelection = Rand.randomInt(1, 4);
             switch (attackSelection) {
@@ -45,7 +47,7 @@ public class Knight extends Creature {
                         action = name + " blocked! Reducing the damage to " + incomingPower + "!";
                     case 3: // Roll
                         incomingPower = incomingPower * 0.5F;
-                        action = name + "rolled to dodge the attack! Reducing the damage to " + incomingPower + "!";
+                        action = name + " rolled to dodge the attack! Reducing the damage to " + incomingPower + "!";
                 }
         }
         else {

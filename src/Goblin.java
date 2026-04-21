@@ -7,6 +7,7 @@ public class Goblin extends Creature {
     public float attack() {
         int missChance = Rand.randomInt(1, 10);
         if (missChance < 1) {
+            action = name + " missed!";
             return 0;
         }
         else {

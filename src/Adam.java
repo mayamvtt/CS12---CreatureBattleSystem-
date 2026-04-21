@@ -8,6 +8,7 @@ public class Adam extends Creature{
     public float attack() {
         int missChance = Rand.randomInt(0, 1000);
         if (missChance < 990) {
+            action = name + " missed!";
             return 0;
         }
         else {
