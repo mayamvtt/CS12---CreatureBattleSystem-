@@ -25,7 +25,7 @@ public class Knight extends Creature {
                     action = name + "smacked with his shield with power " + power + "!";
                 case 4: // Stab
                     power = Rand.randomFloat(10,30);
-                    action = name + "stabbed with power " + power + "!";
+                    action = name + " stabbed with power " + power + "!";
             }
             return power;
         }
@@ -33,17 +33,24 @@ public class Knight extends Creature {
 
     @Override
     public void defend(float incomingPower) {
-
-        // 30 % chance of reducing damage taken (because sword makes it easy to fight)
-        if (Rand.randomInt(0, 10) < 3) {
-            incomingPower = 0;
-            action = name + " parried and fully dodged the attack!";
+        int defendChance = Rand.randomInt(1,3);
+        if (defendChance < 2) {
+            int defenseSelection = Rand.randomInt(1,3);
+                switch (defenseSelection){
+                    case 1: // Parry
+                        incomingPower = 0;
+                        action = name + " parried with no damage taken!";
+                    case 2: // Block
+                        incomingPower = incomingPower * 0.2F;
+                        action = name + " blocked! Reducing the damage to " + incomingPower + "!";
+                    case 3: // Roll
+                        incomingPower = incomingPower * 0.5F;
+                        action = name + "rolled to dodge the attack! Reducing the damage to " + incomingPower + "!";
+                }
         }
-        else
-        {
+        else {
             action = name + " did not defend.";
         }
-
         health -= incomingPower;
     }
 }

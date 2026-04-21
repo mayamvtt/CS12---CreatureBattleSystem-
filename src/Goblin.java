@@ -30,17 +30,21 @@ public class Goblin extends Creature {
 
     @Override
     public void defend(float incomingPower) {
-
-        // 90 % chance of reducing damage taken (because of agility)
-        if (Rand.randomInt(0, 10) < 9) {
-            incomingPower = 0;
-            action = name + " parried and fully dodged the attack!";
+        int defendChance = Rand.randomInt(1,4);
+        if (defendChance < 3) {
+            int defenseSelection = Rand.randomInt(1,2);
+            switch (defenseSelection){
+                case 1: // Roll
+                    incomingPower = 0;
+                    action = name + " rolled with no damage taken!";
+                case 2: // Dash
+                    incomingPower = incomingPower * 0.5F;
+                    action = name + " dashed! Reducing damage to " + incomingPower + "!";
+            }
         }
-        else
-        {
+        else {
             action = name + " did not defend.";
         }
-
         health -= incomingPower;
     }
 }

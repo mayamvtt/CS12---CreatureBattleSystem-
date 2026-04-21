@@ -19,7 +19,7 @@ public class Adam extends Creature{
     public void defend(float incomingPower) {
 
         // 5% chance of reducing damage taken (because he's literally the seed of life lmao)
-        if (Rand.randomInt(0, 100) < 5) {
+        if (Rand.randomInt(0, 100) < 1) {
             incomingPower = 0;
             action = name + " absorbed it all. It did not affect him.";
         }
