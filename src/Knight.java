@@ -1,14 +1,13 @@
 public class Knight extends Creature {
     public Knight(){
-        this.name = "Knight";
-        this.health = 100;
+        super("Knight", 100);
     }
 
     @Override
     public float attack() {
         int missChance = Rand.randomInt(1, 10);
         if (missChance < 4) {
-            action = name + " missed!";
+            setAction(getName() + " missed!");
             return 0;
         }
         else {
@@ -18,16 +17,20 @@ public class Knight extends Creature {
                 // Additional Attack selection
                 case 1: // Slash
                     power = Rand.randomFloat(15, 20);
-                    action = name + " slashed with power " + power + "!";
+                    setAction(getName() + " slashed with power " + power + "!");
+                    break;
                 case 2: // Cut
                     power = Rand.randomFloat(1,5);
-                    action = name + " cut with power " + power + "!";
+                    setAction(getName() + " cut with power " + power + "!");
+                    break;
                 case 3: // Smack with shield
                     power = Rand.randomFloat(5,10);
-                    action = name + "smacked with his shield with power " + power + "!";
+                    setAction(getName() + "smacked with his shield with power " + power + "!");
+                    break;
                 case 4: // Stab
                     power = Rand.randomFloat(10,30);
-                    action = name + " stabbed with power " + power + "!";
+                    setAction(getName() + " stabbed with power " + power + "!");
+                    break;
             }
             return power;
         }
@@ -41,18 +44,18 @@ public class Knight extends Creature {
                 switch (defenseSelection){
                     case 1: // Parry
                         incomingPower = 0;
-                        action = name + " parried with no damage taken!";
+                        setAction(getName() + " parried with no damage taken!");
                     case 2: // Block
                         incomingPower = incomingPower * 0.2F;
-                        action = name + " blocked! Reducing the damage to " + incomingPower + "!";
+                        setAction(getName() + " blocked! Reducing the damage to " + incomingPower + "!");
                     case 3: // Roll
                         incomingPower = incomingPower * 0.5F;
-                        action = name + " rolled to dodge the attack! Reducing the damage to " + incomingPower + "!";
+                        setAction(getName() + " rolled to dodge the attack! Reducing the damage to " + incomingPower + "!");
                 }
         }
         else {
-            action = name + " did not defend.";
+            setAction(getName() + " did not defend.");
         }
-        health -= incomingPower;
+        reduceHealth(incomingPower);
     }
 }

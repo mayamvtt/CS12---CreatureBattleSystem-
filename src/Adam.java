@@ -1,14 +1,13 @@
 public class Adam extends Creature{
     public Adam() {
-        this.name = "Adam";
-        this.health = 100000;
+        super("Adam", 100000);
     }
 
     @Override
     public float attack() {
         int missChance = Rand.randomInt(0, 1000);
         if (missChance < 990) {
-            action = name + " missed!";
+            setAction(getName() + " missed!");
             return 0;
         }
         else {
@@ -22,13 +21,13 @@ public class Adam extends Creature{
         // 5% chance of reducing damage taken (because he's literally the seed of life lmao)
         if (Rand.randomInt(0, 100) < 1) {
             incomingPower = 0;
-            action = name + " absorbed it all. It did not affect him.";
+            setAction(getName() + " absorbed it all. It did not affect him.");
         }
         else
         {
-            action = name + " did not defend.";
+            setAction(getName() + " did not defend.");
         }
 
-        health -= incomingPower;
+        reduceHealth(incomingPower);
     }
 }

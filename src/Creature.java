@@ -1,7 +1,12 @@
 public class Creature {
-    public float health;
-    public String name;
-    public String action;
+    private String name;
+    private float health;
+    private String action;
+
+    public Creature(String name, float health){
+        this.name = name;
+        this.health = health;
+    }
 
     // Returns the damage done by the Creature
     public float attack() {
@@ -40,4 +45,27 @@ public class Creature {
     public String toString() {
         return getClass() + "{name: " + name + ", health: " + health + "}";
     }
+
+    // Getters and "Setters"
+    public float getHealth() {
+        return this.health;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getAction() {
+        return this.action;
+    }
+
+    protected void setAction(String action) {
+        this.action = action;
+    }
+
+    public void reduceHealth(float power){
+        this.health -= power;
+    }
+
+
 }
